@@ -1,0 +1,28 @@
+<?php
+$artistName= "___";
+$tracks = Artist::getTopTracks($artist_name);
+echo "<ul>";
+foreach($tracks as $key => $track) {
+    echo "<li><div>";
+    echo "Track Number: " . ($key + 1) . "<br>";
+    echo "Title: " . $track->getName() . "<br>";
+    echo "Played: " . $track->getPlayCount() . " time(s)<br>";
+    echo "Duration: " . $track->getDuration() . " seconds<br>";
+    echo "Track URL: " . $track->getUrl() . "<br>";
+    echo "</div></li>";
+}
+echo "</ul>";
+
+<?php
+$artistName= "___";
+$albumName= "___";
+$album = Album::getInfo($artistName, $albumName);
+echo "<div>";
+echo "Number of Plays: "
+			 . $album->getPlayCount() . 
+	 " time(s)<br>";
+echo "Cover: <img src="'
+			 . $album->getImage(4) . 
+			 '"><br>";
+echo "Album URL: " . $album->getUrl() . "<br>";
+echo "</div>";
