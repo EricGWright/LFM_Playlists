@@ -11,44 +11,32 @@ The site has the following specs/features:
 Phase 1:<br />
 
 <ul>
-  <li>use the Bootstrap framework</li>
-  <li>___</li>
-  <li>___</li>
-  <li>allow users to enter artists</li>
-  <li>collect the following information:
+  <li>uses the Bootstrap framework</li>
+  <li>collects the following information from the user:
     <ul>
       <li>artist name</li>
-      <li>___</li>
-      <li>___</li>
-      <li>___</li>
-      <li>___</li>
-      <li>___</li>
     </ul>
   </li>
-  <li>save artist information to the server using Ajax and JSON</li>
-  <li>display artist details when users hover over artist names in the track listing</li>
+  <li>communicates with last.fm's api to find that artist's bio and most played tracks</li>
+  <li>saves artist information to the server using Ajax and JSON</li>
+    <ul>
+      <li>artist name</li>
+      <li>track name of top tracks</li>
+      <li>number of plays for each track</li>
+    </ul>
+  </li>
+  <li>display artist bio</li>
+  <li>display track details in an ordered listing</li>
 </ul>
 
 Phase 2:<br />
 
 <ul>
-  <li>___</li>
-  <li>___</li>
-  <li>___</li>
-  <li>___</li>
-  <li>___</li>
-</ul>
-
-Additional technical information:<br />
-
-<ul>
-  <li>___</li>
-  <li>the JavaScript is divided into two major sections:
-    <ol>
-      <li>___</li>
-      <li>___</li>
-    </ol>
-  <li>___</li>
-  <li>___</li>
-  <li>___</li>
+  <li>allow a user to enter another artist</li>
+  <li>get top tracks details from last.fm</li>
+    <ul>
+      <li>track name of top tracks</li>
+      <li>number of plays for each track</li>
+    </ul>
+  <li>creat an ordered list made up of tracks from both artists</li>
 </ul>
