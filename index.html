@@ -40,13 +40,10 @@
     <!-- API data lookup -->
 
     <script type="text/javascript">
-        $(function () {
- //           $("#searchButton").click(function () {
-
                 var trackData = new Array();
-                var artistName = 'The Beatles';
-                var trackName = 'Come Together';
-                var playCount = 317972;
+                //var artistName = $('#nextArtist').val();
+                //var trackName = '';
+                //var playCount = '';
 
                 // define api keys
                 var apiKey = '16a94af784ef5b8ba09ca91d10ffa7d7';
@@ -63,6 +60,9 @@
                 });
 
 
+                function queryTracks(artistName){
+                    searchName = $('#nextArtist').val();
+                    artistName = typeof artistName !== 'undefined' ? artistName : searchName;
                 // load details of the artist
                 lastfm.artist.getInfo({
                     artist: artistName
@@ -74,7 +74,7 @@
                         // load the artis's top tracks
                         lastfm.artist.getTopTracks({
                             artist: artistName,
-                            limit: 5
+                            limit: 6
                         }, {
                             success: function (data) {
                                 // render the tracks using 'lastfmTemplateTracks' template
@@ -87,13 +87,16 @@
                         alert('Error #' + code + ': ' + message);
                     }
                 });
+                };
 
 
 
+        $(function () {
+            //$("#searchButton").click(queryTracks())});
 
 
           // send team data to server
-          $.ajax({
+/*          $.ajax({
             url: "/backliftapp/tracks",
             type: "POST",
             dataType: "JSON",
@@ -146,13 +149,12 @@ function updatetopTracks(){
     // populate track table
     for (var l = 0; l < sort.length; l++) {
       $("#topTracks tbody").append("<tr><th class='rank'>" + (l + 1) + ".</th><td class='artist'>" + sort[l].artistName + "</td><td class='track'>" + sort[l].trackName + "</td><td class='count'>" + sort[l].playCount + "</td></tr>");
-
     }; // end for loop
 
   }; // end updatetopTracks
 
-  //          }); end click function
-}); // end ready
+          }); //end click function */
+}); // end ready 
     </script>
 </head>
 <body>
@@ -185,7 +187,7 @@ function updatetopTracks(){
                             <label class="control-label" for="nextArtist"><h2>Enter Artist:</h2></label>
                             <div class="controls">
                                 <input type="text" id="nextArtist" placeholder="Artist Name">
-                                <button type="submit" class="btn" id="searchButton">Submit</button>
+                                <button type="button" class="btn btn-primary" id="searchButton" onclick='queryTracks();'>Submit</button>
                             </div>
                         </div>
                     </form>
@@ -196,7 +198,7 @@ function updatetopTracks(){
                 <div class="content-body">
                     <h2>Top tracks:</h2>
                     <div class="content-body-inner" id="top_tracks"></div>
-<!--                    <table>
+                    <table>
                         <thead>
                             <tr>
                                 <th class="rank">Rank</th>
@@ -208,7 +210,7 @@ function updatetopTracks(){
                         <tbody>
                         </tbody>
                     </table>
--->                </div>
+                </div>
             </div>
         </div>
     </div>
