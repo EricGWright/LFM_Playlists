@@ -1,6 +1,6 @@
 // on page load
- $(window).load(function() {
-
+// $(window).load(function() {
+$(function() {
     // define api keys
     var apiKey = '16a94af784ef5b8ba09ca91d10ffa7d7';
     var apiSecret = '31d6fc5b7c2ed16737be4be59c6e6dc1';
@@ -15,7 +15,7 @@
         cache     : cache
     });
 
-    var topArtistName = $("nextArtist").val();
+    //var artists = $("nextArtist").val();
 
     // get weekly artist chart by tag ''
     //lastfm.tag.getWeeklyArtistChart({tag: 'psychedelic', limit: 6}, {success: function(data){
@@ -25,11 +25,11 @@
             //$('#lastfmTemplateArtists').render(data.weeklyartistchart.artist)
         //);
 
-        // define top artist name
-        //topArtistName = data.weeklyartistchart.artist[0].name;
-
+        // define artist name
+        //topArtistName = $("#nextArtist").val();
+        $("#searchButton").click(function () {
         // load details of the artist
-        lastfm.artist.getInfo({artist: topArtistName}, {success: function(data){
+        lastfm.artist.getInfo({artist: $("#nextArtist").val()}, {success: function(data){
 
             // render the single artist info using 'lastfmTemplateArtistInfo' template
             $('#top_artist').html(
@@ -37,7 +37,7 @@
             );
 
             // load the artis's top tracks
-            lastfm.artist.getTopTracks({artist: topArtistName, limit: 9}, {success: function(data){
+            lastfm.artist.getTopTracks({artist: $("#nextArtist").val(), limit: 9}, {success: function(data){
 
                 // render the tracks using 'lastfmTemplateTracks' template
                 $('#top_tracks').html(
@@ -49,4 +49,5 @@
             alert('Error #'+code+': '+message);
         }});
     //}});
+    });
 });
